@@ -248,7 +248,7 @@ writing.
 
 ## Tests
 
-173 tests across 16 files, run by `node --test`:
+294 tests (293 pass, 1 skipped) across 20 files, run by `node --test`:
 
 | area | file |
 | --- | --- |
@@ -268,6 +268,10 @@ writing.
 | cancellation, checkpoint, resume | `test/recovery.test.js` |
 | Phase 1 compatibility | `test/phase1-compat.test.js` |
 | regression pins for the defects found in Phase 2 | `test/regressions.test.js` |
+| security hardening pins | `test/security-hardening.test.js` |
+| adversarial input pins | `test/adversarial.test.js` |
+| Phase 2.2 regression pins | `test/phase22-regressions.test.js` |
+| Phase 2.2 identifier-aliasing pins | `test/phase22-aliasing-regressions.test.js` |
 
 CI runs the suite on Node 18, 20 and 22, plus the Phase 1 compatibility
 suite, an offline provider smoke check, `aegis doctor`, and a credential

@@ -8,7 +8,7 @@ declared, scoped, limited, audited, and recoverable.
 This repository is the working core. It runs on Node.js 18+ with **zero
 runtime dependencies**.
 
-> **Status.** Phase 0–2 complete. **173 automated tests pass**, and CI runs
+> **Status.** Phase 0–2 complete. **294 automated tests** (293 pass, 1 skipped), and CI runs
 > the suite on Node 18, 20 and 22. The HTTP provider is proven against a
 > local mock server; it has **not** been pointed at a paid model, because no
 > credential is available in this environment. See
@@ -34,7 +34,7 @@ the parts that make it an agent system rather than a task tracker.
 ## Quick start
 
 ```bash
-# run the full suite (173 tests)
+# run the full suite (294 tests)
 npm test
 
 # explore the CLI
@@ -128,7 +128,7 @@ These are design constraints, not aspirations. Each one has a test.
 ## Tests
 
 ```bash
-npm test              # 173 tests, the full suite
+npm test              # 294 tests, the full suite
 npm run test:phase1   # the Phase 1 compatibility suite
 npm run scan:secrets  # credential-shaped string scan
 ```
