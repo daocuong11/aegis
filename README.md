@@ -1,5 +1,9 @@
 # Project AEGIS — Core
 
+![Demo](docs/demo.png)
+
+*The AEGIS multi-agent core in action.*
+
 Project AEGIS is a multi-agent AI system built around a rule that most
 agent frameworks treat as an afterthought: **the system must be safe and
 correct before it is clever.** Every capability an agent can reach is
