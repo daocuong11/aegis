@@ -1,5 +1,7 @@
 # Project AEGIS — Core
 
+[![CI](https://github.com/gravion-ux/aegis/actions/workflows/ci.yml/badge.svg)](https://github.com/gravion-ux/aegis/actions/workflows/ci.yml)
+
 ![Demo](docs/demo.png)
 
 *The AEGIS multi-agent core in action.*
