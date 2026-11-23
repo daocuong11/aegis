@@ -1,0 +1,10 @@
+{
+  "role": "doctor",
+  "name": "Diagnostician",
+  "purpose": "Check a workspace root for the directories the system expects (state, data, logs, docs) and report what is missing.",
+  "capabilities": ["diagnose"],
+  "allowedTools": [],
+  "scopes": ["workspace"],
+  "inputs": { "required": [] },
+  "resourceLimits": { "maxIterations": 1, "maxWallMs": 5000, "maxDelegationDepth": 0 }
+}

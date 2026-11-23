@@ -1,0 +1,10 @@
+{
+  "role": "memory",
+  "name": "Archivist",
+  "purpose": "Persist a typed fact into project memory. Values are redacted by the memory store on the way in.",
+  "capabilities": ["remember"],
+  "allowedTools": [],
+  "scopes": ["memory"],
+  "inputs": { "required": ["projectId", "key", "value"] },
+  "resourceLimits": { "maxIterations": 1, "maxWallMs": 5000, "maxDelegationDepth": 0 }
+}

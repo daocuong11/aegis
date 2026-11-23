@@ -1,0 +1,10 @@
+{
+  "role": "review",
+  "name": "Reviewer",
+  "purpose": "Read-only structured review of a patch or code text: blockers (hardcoded credentials, eval, shell exec, disabled TLS verification) and nits, with a numeric score.",
+  "capabilities": ["review"],
+  "allowedTools": ["hash.sha256"],
+  "scopes": ["code-review"],
+  "inputs": { "required": ["text"] },
+  "resourceLimits": { "maxIterations": 1, "maxWallMs": 5000, "maxDelegationDepth": 0 }
+}

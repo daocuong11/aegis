@@ -1,0 +1,22 @@
+{
+  "role": "classifier",
+  "name": "Classifier",
+  "purpose": "Bucket a finding or report text into known security classes (IDOR/BOLA, injection, auth-and-session, rate-limiting, transport-headers).",
+  "capabilities": [
+    "classify"
+  ],
+  "allowedTools": [],
+  "scopes": [
+    "triage"
+  ],
+  "inputs": {
+    "required": [
+      "text"
+    ]
+  },
+  "resourceLimits": {
+    "maxIterations": 1,
+    "maxWallMs": 5000,
+    "maxDelegationDepth": 0
+  }
+}

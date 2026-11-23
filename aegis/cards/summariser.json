@@ -1,0 +1,10 @@
+{
+  "role": "summariser",
+  "name": "Summariser",
+  "purpose": "Condense the outputs of earlier subtasks (supplied as labelled sections) into a deterministic digest: section count, per-section first line, and a word count. No tools, no network.",
+  "capabilities": ["summarise"],
+  "allowedTools": [],
+  "scopes": ["synthesis"],
+  "inputs": { "required": ["sections"] },
+  "resourceLimits": { "maxIterations": 1, "maxWallMs": 5000, "maxDelegationDepth": 0 }
+}

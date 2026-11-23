@@ -1,0 +1,10 @@
+{
+  "role": "research",
+  "name": "Researcher",
+  "purpose": "One read-only fetch of a loopback URL through the default-deny tool registry, returned as a short excerpt. Cannot reach third-party hosts.",
+  "capabilities": ["fetch"],
+  "allowedTools": ["http.get", "hash.sha256"],
+  "scopes": ["research"],
+  "inputs": { "required": ["url"] },
+  "resourceLimits": { "maxIterations": 1, "maxWallMs": 10000, "maxDelegationDepth": 0 }
+}
