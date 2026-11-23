@@ -197,11 +197,47 @@ const routerAgent = async (task) => {
   };
 };
 
+
+// ---- summariser -----------------------------------------------------------
+
+/**
+ * Condense labelled sections (typically the outputs of earlier subtasks)
+ * into a deterministic digest: for each section, its label, first line and
+ * word count, plus totals. Pure text processing — no tools, no network,
+ * no clock-dependent branching — so the same input always digests the
+ * same way, which is what makes a chief's final report reproducible.
+ */
+const summarise = async (task) => {
+  const sections = (task && task.input && task.input.sections) || [];
+  if (!Array.isArray(sections) || sections.length === 0) {
+    return {
+      status: STATES.FAILED,
+      output: null,
+      error: 'sections is required and must be a non-empty array',
+      evidence: [{ kind: 'summarise', sections: 0, at: nowIso() }],
+    };
+  }
+  const digest = sections.map((sec) => {
+    const label = String((sec && sec.label) || '(unlabelled)');
+    const body = String((sec && sec.body) || '');
+    const firstLine = body.split('\n').find((l) => l.trim().length > 0) || '';
+    const words = body.trim() ? body.trim().split(/\s+/).length : 0;
+    return { label, firstLine: firstLine.slice(0, 120), words };
+  });
+  const totalWords = digest.reduce((n, d) => n + d.words, 0);
+  return {
+    status: STATES.SUCCEEDED,
+    output: { sections: digest, totalWords },
+    evidence: [{ kind: 'summarise', sections: digest.length, totalWords, at: nowIso() }],
+  };
+};
+
 module.exports = {
   review,
   memory: memoryAgent,
   research,
   router: routerAgent,
+  summarise,
   BLOCKERS,
   NITS,
   ROUTE_RULES,

@@ -12,6 +12,10 @@
  *   - orchestrator (runs agents under declared limits)
  *   - recovery   (checkpoints, idempotency, cancellation)
  *   - config     (typed config, secrets stripped)
+ * Phase 3 adds:
+ *   - chief      (goal decomposition into a task graph, card-based
+ *                 specialists, scope enforcement in code, verification
+ *                 pass before a mission may be called done)
  */
 
 const path = require('node:path');
@@ -36,6 +40,8 @@ const specialists = require('./specialists');
 const paths = require('./paths');
 const { Checkpoint, CheckpointStore, Idempotency } = require('./recovery');
 const { loadConfig, validateConfig, DEFAULTS } = require('./config');
+const { CardRegistry, CardError, loadCards } = require('./cards');
+const { Chief, ChiefError, Scope, TaskGraph } = require('./chief');
 
 function createContext(opts = {}) {
   const root = opts.root || process.cwd();
@@ -75,10 +81,11 @@ function createContext(opts = {}) {
     manifest, agentRegistry, toolRegistry, memory,
     budget: opts.budget || budgets, audit, providerRouter,
   });
+  const chief = opts.chief || new Chief({ orchestrator, cards: opts.cards, audit });
 
   return {
     root, logger, audit, storage, memory, agentRegistry, toolRegistry,
-    providerRegistry, providerRouter, config, budgets, manifest, orchestrator, checkpoints,
+    providerRegistry, providerRouter, config, budgets, manifest, orchestrator, chief, checkpoints,
     argv: opts.argv || [],
     options: opts,
   };
@@ -124,4 +131,13 @@ module.exports = {
   loadConfig,
   validateConfig,
   DEFAULTS,
+
+  // Phase 3 additions
+  CardRegistry,
+  CardError,
+  loadCards,
+  Chief,
+  ChiefError,
+  Scope,
+  TaskGraph,
 };

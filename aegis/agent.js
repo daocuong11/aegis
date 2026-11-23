@@ -114,6 +114,10 @@ function buildDefaultRegistry() {
   reg.register(new Agent('research', specialists.research));
   reg.register(new Agent('router', specialists.router));
 
+  // Phase 3 specialist (chief layer). Registered for the same reason as
+  // the Phase 2 specialists above: a card without a runner is a bug.
+  reg.register(new Agent('summariser', specialists.summarise));
+
   return reg;
 }
 

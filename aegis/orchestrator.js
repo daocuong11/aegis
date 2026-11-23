@@ -105,6 +105,22 @@ const BUILTIN_AGENTS = [
     resourceLimits: { maxIterations: 1, maxWallMs: 10_000, maxDelegationDepth: 0 },
   },
   {
+    role: 'summariser',
+    purpose: 'Condense labelled sections into a deterministic digest (first line + word count per section).',
+    inputs: { type: 'object', properties: { sections: { type: 'array' } }, required: ['sections'] },
+    allowedTools: [],
+    outputSchema: {
+      type: 'object',
+      properties: {
+        status: { enum: ['SUCCEEDED', 'FAILED'] },
+        output: { type: 'object', properties: { sections: { type: 'array' }, totalWords: { type: 'number' } } },
+        evidence: { type: 'array' },
+      },
+      required: ['status', 'output', 'evidence'],
+    },
+    resourceLimits: { maxIterations: 1, maxWallMs: 5_000, maxDelegationDepth: 0 },
+  },
+  {
     role: 'router',
     purpose: 'Inspect a task input and return the recommended agent role.',
     inputs: { type: 'object' },
