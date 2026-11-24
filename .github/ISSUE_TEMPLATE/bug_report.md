@@ -1,57 +1,30 @@
+---
 name: Bug report
-description: Something in the tool behaves in a way you did not expect
-labels: ["bug"]
-body:
-  - type: markdown
-    attributes:
-      value: |
-        Thanks for the report. Please keep it reproducible — a failing test
-        or a command with its output is worth more than a description.
+about: A chief/subagent behaviour, manifest, or bundle behaves in a way you did not expect
+title: "[Bug]: "
+labels: bug
+assignees: ""
+---
 
-  - type: input
-    id: version
-    attributes:
-      label: Version or commit
-      description: The commit SHA, or `git log -1`.
-      placeholder: "e.g. 9a75cc8"
-    validations:
-      required: true
+## Version
 
-  - type: dropdown
-    id: area
-    attributes:
-      label: Area
-      options:
-        - Task lifecycle / state machine
-        - Memory
-        - Provider routing
-        - Tool registry / permissions
-        - Budget or resource limits
-        - Orchestrator / specialist agents
-        - Cancellation / checkpoint / resume
-        - CLI
-        - CI or documentation
-    validations:
-      required: true
+<!-- Release tag or commit SHA, or `git log -1`. -->
 
-  - type: textarea
-    id: repro
-    attributes:
-      label: Steps to reproduce
-      description: Commands, inputs, and what you expected instead.
-      render: shell
-    validations:
-      required: true
+## Environment
 
-  - type: textarea
-    id: logs
-    attributes:
-      label: Output
-      description: Paste the console output. Please redact any credential first.
-      render: shell
+- OS:
+- Node version: <!-- `node --version` -->
+- Component involved: <!-- chief / a named subagent / manifest / bundle -->
 
-  - type: input
-    id: env
-    attributes:
-      label: Node version and OS
-      placeholder: "Node v20.11.0, Windows 11"
+## What happened
+
+<!-- What the system did. Quote the relevant output. Never paste real
+     API keys or private data — redact them. -->
+
+## Expected behaviour
+
+<!-- What it should have done instead. -->
+
+## Steps to reproduce
+
+<!-- The smallest sequence that reproduces it. -->
