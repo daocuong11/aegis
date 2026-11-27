@@ -7,7 +7,7 @@ own security gets treated seriously.
 
 Please **do not open a public issue** for a vulnerability. Use GitHub's
 private vulnerability reporting on this repository
-(<https://github.com/gravion-ux/project-aegis/security/advisories/new>),
+(<https://github.com/gravion-ux/aegis/security/advisories/new>),
 or open a private issue if that is not available to you.
 
 Include:
@@ -54,3 +54,12 @@ very welcome:
 
 Only the current `main` branch is supported. Older commits are kept for
 history, not for backports.
+
+## Repository hygiene
+
+GitHub secret scanning and push protection are enabled for this
+repository. Dependabot checks npm and GitHub Actions dependencies
+weekly, CodeQL runs on pushes, pull requests, and a weekly schedule,
+and CI also runs `scripts/scan-secrets.js` over the tracked tree.
+Never commit provider credentials or local AEGIS state; keep endpoints
+and credentials in the environment.
